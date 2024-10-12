@@ -1,0 +1,29 @@
+.product-detail {
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
+    url('../../assets/imgs/png/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 10px 30px 30px 20px;
+    box-sizing: border-box;
+}
+
+.product-view{
+    display: flex;
+}
+
+.product-detail-content{
+    display: flex;
+}
+
+.size-chart-pic{
+    width: 436px;
+    height: 258px;
+}
+
+.product-detail-picture{
+    width: 450px;
+    height: 500px;
+    background: #fff;
+    border-radius: 10px;
+}

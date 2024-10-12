@@ -1,0 +1,24 @@
+.header-container{
+    background: #443D3A;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.contacts-block{
+    display: flex;
+    gap: 1rem;
+}
+.contact-btn{
+    border-radius: 5px;
+    background: #D07E50;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.logo-pic{
+    width: 405px;
+    height: 99px;
+    cursor: pointer;
+}
