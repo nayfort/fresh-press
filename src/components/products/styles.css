@@ -10,10 +10,34 @@
 
 .product-view{
     display: flex;
+    gap: 1rem;
+    width: max-content;
+    padding: 0 1rem 0 1rem;
+    color: #767676;
+    border-bottom: #b2b2b2 1px solid;
+    margin: 0 0 1rem 0;
+}
+
+.view-item.selected-view {
+    border-bottom: #303030 1px solid;
+    color: #303030;
+}
+
+.view-item {
+    cursor: pointer;
+}
+
+.product-detail-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .product-detail-content{
     display: flex;
+    height: 100%;
+    box-sizing: border-box;
+    gap: 1rem;
 }
 
 .size-chart-pic{
@@ -26,4 +50,75 @@
     height: 500px;
     background: #fff;
     border-radius: 10px;
+}
+
+.product-detail-pic{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.product-detail-info-title{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.product-detail-info{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.download-pic-btn{
+    width: 449px;
+    height: 62px;
+    border: none;
+    background: #443D3A;
+    display: flex;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    gap: 1rem;
+    box-sizing: border-box;
+}
+
+.download-description{
+    width: 450px;
+    height: 110px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 1%;
+    align-items: center;
+    display: flex;
+}
+
+.size-btn{
+    border: none;
+    background: inherit;
+    width: 65px;
+    height: 60px;
+}
+
+.size-btn.selected {
+    background: #443D3A;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.buy-el-btn{
+    width: 361px;
+    height: 69px;
+    border: none;
+    background: #D07E50;
+    display: flex;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    gap: 1rem;
+    box-sizing: border-box;
 }
