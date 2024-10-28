@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './styles.css';
-import { Download, Cart } from "../../assets/imgs/svg/index.js";
+import { Download, Cart, Heart } from "../../assets/imgs/svg/index.js";
 import SizeChart from "../../assets/imgs/png/tshirt-size.png";
+import * as fabric from "fabric";
 
 const productsData = [
     { id: 1, name: 'Футболка', price: 50 },
@@ -21,6 +22,8 @@ const ProductDetail = () => {
 
     const [selectedSize, setSelectedSize] = useState('XS');
     const [selectedView, setSelectedView] = useState('front');
+    const [textInput, setTextInput] = useState('');
+    const [canvas, setCanvas] = useState(null);
 
     const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
     const views = [
@@ -36,6 +39,66 @@ const ProductDetail = () => {
 
     const handleViewClick = (view) => {
         setSelectedView(view);
+    };
+
+    useEffect(() => {
+        const newCanvas = new fabric.Canvas('designCanvas');
+        setCanvas(newCanvas);
+
+        return () => {
+            newCanvas.dispose();
+        };
+    }, [selectedView]);
+
+    const addText = () => {
+        if (textInput && canvas) {
+            const text = new fabric.Text(textInput, {
+                left: 100,
+                top: 100,
+                fill: '#000',
+                fontSize: 24,
+            });
+            canvas.add(text);
+        }
+    };
+
+    const handleImageUpload = (event) => {
+        const file = event.target.files[0];
+        if (file && canvas) {
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                const imgSrc = e.target.result;
+
+                console.log("Image source loaded:", imgSrc);
+
+                fabric.Image.fromURL(imgSrc, (img) => {
+                    if (img) {
+                        img.set({
+                            left: 50, // начальная позиция изображения на холсте
+                            top: 50,
+                            scaleX: 0.5, // начальное масштабирование
+                            scaleY: 0.5,
+                        });
+
+                        console.log("Image object created and ready to add to canvas:", img); // Логирование объекта изображения
+
+                        canvas.add(img);
+                        canvas.renderAll(); // Отрисовка холста после добавления изображения
+
+                        console.log("Image successfully added to canvas.");
+                    } else {
+                        console.error("Failed to create image object.");
+                    }
+                }, { crossOrigin: 'anonymous' }); //CORS
+            };
+
+            reader.onerror = (error) => console.error("Error reading file:", error);
+
+            reader.readAsDataURL(file);
+        } else {
+            console.error("No file selected or canvas not initialized");
+        }
     };
 
     return (
@@ -54,7 +117,8 @@ const ProductDetail = () => {
             <div className="product-detail-content">
                 <div className="product-detail-pic">
                     <div className="product-detail-picture">
-                        <img src="" alt={product.name} />
+                        <div className='product-favorite'><Heart /></div>
+                        <canvas id="designCanvas" width="450" height="500"></canvas>
                     </div>
                     <button className='download-pic-btn'>Завантажити фото<Download /></button>
                     <div className='download-description'>
@@ -64,11 +128,10 @@ const ProductDetail = () => {
                 </div>
                 <div className="product-detail-info">
                     <div className="product-detail-info-title">
-                        <div>{product.name}</div>
-                        <div>${product.price}</div>
-                        <div>
-                            Ваше замовлення буде виготовлено і передано в службу доставки після уточнень деталей
-                            замовлення з менеджером або автоматичної обробки
+                        <div className='product-name'>{product.name}</div>
+                        <div className='product-price'>${product.price}</div>
+                        <div className='product-description'>
+                            Ваше замовлення буде виготовлено і передано в службу доставки після уточнень деталей замовлення з менеджером або автоматичної обробки
                         </div>
                         <div>Вкажіть розмір:</div>
                     </div>
@@ -84,8 +147,19 @@ const ProductDetail = () => {
                         ))}
                     </div>
                     <button className='buy-el-btn'>Купити<Cart /></button>
-                    <div>Розмірна сітка:</div>
-                    <img src={SizeChart} alt="" className='size-chart-pic' />
+                    <div className='product-size'>Розмірна сітка:</div>
+                    <img src={SizeChart} alt="SizeChart" className='size-chart-pic' />
+                </div>
+                <div className="customization-controls">
+                    <input
+                        type="text"
+                        value={textInput}
+                        onChange={(e) => setTextInput(e.target.value)}
+                        placeholder="Введите текст"
+                    />
+                    <button onClick={addText}>Добавить текст</button>
+
+                    <input type="file" onChange={handleImageUpload} />
                 </div>
             </div>
         </div>
