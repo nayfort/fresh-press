@@ -75,16 +75,16 @@ const ProductDetail = () => {
                 fabric.Image.fromURL(imgSrc, (img) => {
                     if (img) {
                         img.set({
-                            left: 50, // начальная позиция изображения на холсте
+                            left: 50,
                             top: 50,
-                            scaleX: 0.5, // начальное масштабирование
+                            scaleX: 0.5,
                             scaleY: 0.5,
                         });
 
-                        console.log("Image object created and ready to add to canvas:", img); // Логирование объекта изображения
+                        console.log("Image object created and ready to add to canvas:", img);
 
                         canvas.add(img);
-                        canvas.renderAll(); // Отрисовка холста после добавления изображения
+                        canvas.renderAll();
 
                         console.log("Image successfully added to canvas.");
                     } else {
