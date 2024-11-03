@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './styles.css';
-import { Download, Cart, Heart } from "../../assets/imgs/svg/index.js";
+import { Download, Cart, Heart, FullHeart } from "../../assets/imgs/svg/index.js";
 import SizeChart from "../../assets/imgs/png/tshirt-size.png";
 import * as fabric from "fabric";
 
@@ -24,6 +24,7 @@ const ProductDetail = () => {
     const [selectedView, setSelectedView] = useState('front');
     const [textInput, setTextInput] = useState('');
     const [canvas, setCanvas] = useState(null);
+    const [isFavorite, setIsFavorite] = useState(false);
 
     const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
     const views = [
@@ -90,7 +91,7 @@ const ProductDetail = () => {
                     } else {
                         console.error("Failed to create image object.");
                     }
-                }, { crossOrigin: 'anonymous' }); //CORS
+                }, { crossOrigin: 'anonymous' });
             };
 
             reader.onerror = (error) => console.error("Error reading file:", error);
@@ -117,7 +118,12 @@ const ProductDetail = () => {
             <div className="product-detail-content">
                 <div className="product-detail-pic">
                     <div className="product-detail-picture">
-                        <div className='product-favorite'><Heart /></div>
+                        <div
+                            className='product-favorite'
+                            onClick={() => setIsFavorite(!isFavorite)}
+                        >
+                            {isFavorite ? <FullHeart /> : <Heart />}
+                        </div>
                         <canvas id="designCanvas" width="450" height="500"></canvas>
                     </div>
                     <button className='download-pic-btn'>Завантажити фото<Download /></button>
@@ -155,10 +161,9 @@ const ProductDetail = () => {
                         type="text"
                         value={textInput}
                         onChange={(e) => setTextInput(e.target.value)}
-                        placeholder="Введите текст"
+                        placeholder="Add text"
                     />
-                    <button onClick={addText}>Добавить текст</button>
-
+                    <button onClick={addText}>Add text</button>
                     <input type="file" onChange={handleImageUpload} />
                 </div>
             </div>
