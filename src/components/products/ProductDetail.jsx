@@ -6,14 +6,14 @@ import SizeChart from "../../assets/imgs/png/tshirt-size.png";
 import * as fabric from "fabric";
 
 const productsData = [
-    { id: 1, name: 'Футболка', price: 50 },
-    { id: 2, name: 'Худі', price: 60 },
-    { id: 3, name: 'Шапка', price: 25 },
-    { id: 4, name: 'Кепка', price: 20 },
-    { id: 5, name: 'Шопер', price: 15 },
-    { id: 6, name: 'Стакан', price: 10 },
-    { id: 7, name: 'Стікер', price: 5 },
-    { id: 8, name: 'Пляшка', price: 12 }
+    { id: 1, name: 'Футболка', price: 50, type: 'apparel' },
+    { id: 2, name: 'Худі', price: 60, type: 'apparel' },
+    { id: 3, name: 'Шапка', price: 25, type: 'accessory' },
+    { id: 4, name: 'Кепка', price: 20, type: 'accessory' },
+    { id: 5, name: 'Шопер', price: 15, type: 'accessory' },
+    { id: 6, name: 'Стакан', price: 10, type: 'accessory' },
+    { id: 7, name: 'Стікер', price: 5, type: 'accessory' },
+    { id: 8, name: 'Пляшка', price: 12, type: 'accessory' }
 ];
 
 const ProductDetail = () => {
@@ -27,11 +27,16 @@ const ProductDetail = () => {
     const [isFavorite, setIsFavorite] = useState(false);
 
     const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
+
     const views = [
         { name: 'Вид спереду', value: 'front' },
         { name: 'Вид ззаду', value: 'back' },
-        { name: 'Лівий рукав', value: 'left_sleeve' },
-        { name: 'Правий рукав', value: 'right_sleeve' }
+        product.type === 'apparel'
+            ? { name: 'Лівий рукав', value: 'left_sleeve' }
+            : { name: 'Вид зліва', value: 'left' },
+        product.type === 'apparel'
+            ? { name: 'Правий рукав', value: 'right_sleeve' }
+            : { name: 'Вид справа', value: 'right' }
     ];
 
     const handleSizeClick = (size) => {
@@ -40,6 +45,7 @@ const ProductDetail = () => {
 
     const handleViewClick = (view) => {
         setSelectedView(view);
+        console.log(`Current view selected: ${view}`);
     };
 
     useEffect(() => {
@@ -49,6 +55,10 @@ const ProductDetail = () => {
         return () => {
             newCanvas.dispose();
         };
+    }, [selectedView]);
+
+    useEffect(() => {
+        console.log("Selected view changed to:", selectedView);
     }, [selectedView]);
 
     const addText = () => {
@@ -71,8 +81,6 @@ const ProductDetail = () => {
             reader.onload = (e) => {
                 const imgSrc = e.target.result;
 
-                console.log("Image source loaded:", imgSrc);
-
                 fabric.Image.fromURL(imgSrc, (img) => {
                     if (img) {
                         img.set({
@@ -81,24 +89,13 @@ const ProductDetail = () => {
                             scaleX: 0.5,
                             scaleY: 0.5,
                         });
-
-                        console.log("Image object created and ready to add to canvas:", img);
-
                         canvas.add(img);
                         canvas.renderAll();
-
-                        console.log("Image successfully added to canvas.");
-                    } else {
-                        console.error("Failed to create image object.");
                     }
                 }, { crossOrigin: 'anonymous' });
             };
 
-            reader.onerror = (error) => console.error("Error reading file:", error);
-
             reader.readAsDataURL(file);
-        } else {
-            console.error("No file selected or canvas not initialized");
         }
     };
 
