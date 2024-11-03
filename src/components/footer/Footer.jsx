@@ -1,16 +1,26 @@
 import "./styles.css";
-import {Figma, Instagram, LinkedIn, Twitter, YouTube} from "../../assets/imgs/svg/index.js";
+import { Figma, Instagram, LinkedIn, Twitter, YouTube } from "../../assets/imgs/svg/index.js";
 
 const Footer = () => {
     return (
         <div className="footer-container">
             <div className="footer-networks">
-                <Figma/>
+                <a className='footer-link-figma' href="https://figma.com" target="_blank" rel="noopener noreferrer">
+                    <Figma/>
+                </a>
                 <div className='footer-net-links'>
-                    <Twitter/>
-                    <Instagram/>
-                    <YouTube/>
-                    <LinkedIn/>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                        <Twitter/>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                        <Instagram/>
+                    </a>
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                        <YouTube/>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                        <LinkedIn/>
+                    </a>
                 </div>
             </div>
             <div className="footer-links">

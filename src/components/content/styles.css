@@ -36,6 +36,7 @@
 }
 .search-icon{
     transform: translateX(-30px);
+    cursor: pointer;
 }
 .search-input{
     border: none;

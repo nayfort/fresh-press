@@ -80,6 +80,7 @@
     align-items: center;
     justify-content: center;
     z-index: 999;
+    margin: 1rem 0 0 1rem;
 }
 .product-name{
     font-weight: bold;
