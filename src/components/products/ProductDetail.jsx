@@ -28,16 +28,40 @@ const ProductDetail = () => {
 
     const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
 
-    const views = [
-        { name: 'Вид спереду', value: 'front' },
-        { name: 'Вид ззаду', value: 'back' },
-        product.type === 'apparel'
-            ? { name: 'Лівий рукав', value: 'left_sleeve' }
-            : { name: 'Вид зліва', value: 'left' },
-        product.type === 'apparel'
-            ? { name: 'Правий рукав', value: 'right_sleeve' }
-            : { name: 'Вид справа', value: 'right' }
-    ];
+    // Определение видов в зависимости от типа и имени продукта
+    const views = product.name === 'Футболка' || product.name === 'Худі'
+        ? [
+            { name: 'Вид спереду', value: 'front' },
+            { name: 'Вид ззаду', value: 'back' },
+            { name: 'Лівий рукав', value: 'left_sleeve' },
+            { name: 'Правий рукав', value: 'right_sleeve' }
+        ]
+        : product.name === 'Шапка'
+            ? [
+                { name: 'Вид спереду', value: 'front' },
+                { name: 'Вид ззаду', value: 'back' }
+            ]
+            : product.name === 'Кепка'
+                ? [
+                    { name: 'Вид спереду', value: 'front' },
+                    { name: 'Вид ззаду', value: 'back' },
+                    { name: 'Вид зверху', value: 'top' }
+                ]
+                : product.name === 'Шопер'
+                    ? [
+                        { name: 'Вид спереду', value: 'front' },
+                        { name: 'Вид ззаду', value: 'back' }
+                    ]
+                    : product.name === 'Стакан' || product.name === 'Стікер'
+                        ? [
+                            { name: 'Вид спереду', value: 'front' },
+                            { name: 'Вид ззаду', value: 'back' }
+                        ]
+                        : product.name === 'Пляшка'
+                            ? [
+                                { name: 'Вид спереду', value: 'front' }
+                            ]
+                            : [];
 
     const handleSizeClick = (size) => {
         setSelectedSize(size);

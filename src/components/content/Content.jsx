@@ -48,9 +48,10 @@ const Content = () => {
             <div className="items-block">
                 {products.map((product) => (
                     <Link to={`/product/${product.id}`} key={product.id} className="content-card">
-                        <div className='content-card'>
+                        <div className='content-card-element'>
                             <img src={product.img} alt={product.name} className="product-image" />
-                            <p>{product.name}</p>
+                            <p className='content-product-name'>{product.name}</p>
+                            <p className='content-product-price'>${product.price}</p>
                         </div>
                     </Link>
                 ))}
