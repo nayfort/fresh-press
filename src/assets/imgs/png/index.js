@@ -1,11 +1,11 @@
-import Bag from './bag.png';
-import Cap from './cap.png';
-import Hat from './hat.png';
-import Bottle from './bottle.png';
-import Cups from './cups.png';
-import Hoodie from './hoodie.png';
-import Stickers from './stickers.png';
-import Tshirt from './tshirt.png';
+import Bag from './bag/bag.png';
+import Cap from './cap/cap.png';
+import Hat from './hat/hat.png';
+import Bottle from './bottle/bottle.png';
+import Cups from './cup/cups.png';
+import Hoodie from './hoodie/hoodie.png';
+import Stickers from './sticker/stickers.png';
+import Tshirt from './tshirt/tshirt.png';
 
 export {
     Bag,

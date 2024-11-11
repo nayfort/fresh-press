@@ -1,9 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './styles.css';
 import { Download, Cart, Heart, FullHeart } from "../../assets/imgs/svg/index.js";
-import SizeChart from "../../assets/imgs/png/tshirt-size.png";
-import * as fabric from "fabric";
+import SizeChart from "../../assets/imgs/png/tshirt/tshirt-size.png";
+
+import {tshirtFront, tshirtBack} from "../../assets/imgs/png/tshirt/index.jsx";
+import {hoodieFront, hoodieLeft, hoodieRight, hoodieBack} from "../../assets/imgs/png/hoodie/index.jsx";
+import {hatFront, hatBack, hatRight, hatLeft} from "../../assets/imgs/png/hat/index.jsx";
+import {capFront, capBack} from "../../assets/imgs/png/cap/index.jsx";
+import {bagFront, bagBack} from "../../assets/imgs/png/bag/index.jsx";
+import {cupFront, cupBack} from "../../assets/imgs/png/cup/index.jsx";
+import {stickerFront} from "../../assets/imgs/png/sticker/index.jsx";
+import {bottleFront} from "../../assets/imgs/png/bottle/index.jsx";
 
 const productsData = [
     { id: 1, name: 'Футболка', price: 50, type: 'apparel' },
@@ -16,20 +24,53 @@ const productsData = [
     { id: 8, name: 'Пляшка', price: 12, type: 'accessory' }
 ];
 
+const productImages = {
+    1: {
+        front: tshirtFront,
+        back: tshirtBack,
+    },
+    2: {
+        front: hoodieFront,
+        back: hoodieBack,
+        left_sleeve: hoodieLeft,
+        right_sleeve: hoodieRight,
+    },
+    3: {
+        front: hatFront,
+        back: hatBack,
+        left_sleeve: hatLeft,
+        right_sleeve: hatRight,
+    },
+    4: {
+        front: capFront,
+        back: capBack,
+    },
+    5: {
+        front: bagFront,
+        back: bagBack,
+    },
+    6: {
+        front: cupFront,
+        back: cupBack,
+    },
+    7: {
+        front: stickerFront,
+    },
+    8: {
+        front: bottleFront,
+    },
+};
+
 const ProductDetail = () => {
     const { id } = useParams();
     const product = productsData.find((item) => item.id === parseInt(id));
 
     const [selectedSize, setSelectedSize] = useState('XS');
     const [selectedView, setSelectedView] = useState('front');
-    const [textInput, setTextInput] = useState('');
-    const [canvas, setCanvas] = useState(null);
     const [isFavorite, setIsFavorite] = useState(false);
-
     const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
 
-    // Определение видов в зависимости от типа и имени продукта
-    const views = product.name === 'Футболка' || product.name === 'Худі'
+    const views = product.name === 'Худі'
         ? [
             { name: 'Вид спереду', value: 'front' },
             { name: 'Вид ззаду', value: 'back' },
@@ -39,27 +80,18 @@ const ProductDetail = () => {
         : product.name === 'Шапка'
             ? [
                 { name: 'Вид спереду', value: 'front' },
-                { name: 'Вид ззаду', value: 'back' }
+                { name: 'Вид ззаду', value: 'back' },
+                { name: 'Вид зліва', value: 'left_sleeve' },
+                { name: 'Вид справа', value: 'right_sleeve' },
             ]
-            : product.name === 'Кепка'
+            : product.name === 'Футболка' || product.name === 'Кепка' || product.name === 'Шопер' || product.name === 'Стакан'
                 ? [
                     { name: 'Вид спереду', value: 'front' },
                     { name: 'Вид ззаду', value: 'back' },
-                    { name: 'Вид зверху', value: 'top' }
                 ]
-                : product.name === 'Шопер'
-                    ? [
-                        { name: 'Вид спереду', value: 'front' },
-                        { name: 'Вид ззаду', value: 'back' }
-                    ]
-                    : product.name === 'Стакан' || product.name === 'Стікер'
+                    : product.name === 'Пляшка' || product.name === 'Стікер'
                         ? [
-                            { name: 'Вид спереду', value: 'front' },
-                            { name: 'Вид ззаду', value: 'back' }
-                        ]
-                        : product.name === 'Пляшка'
-                            ? [
-                                { name: 'Вид спереду', value: 'front' }
+                            { name: 'Вид спереду', value: 'front' }
                             ]
                             : [];
 
@@ -70,57 +102,6 @@ const ProductDetail = () => {
     const handleViewClick = (view) => {
         setSelectedView(view);
         console.log(`Current view selected: ${view}`);
-    };
-
-    useEffect(() => {
-        const newCanvas = new fabric.Canvas('designCanvas');
-        setCanvas(newCanvas);
-
-        return () => {
-            newCanvas.dispose();
-        };
-    }, [selectedView]);
-
-    useEffect(() => {
-        console.log("Selected view changed to:", selectedView);
-    }, [selectedView]);
-
-    const addText = () => {
-        if (textInput && canvas) {
-            const text = new fabric.Text(textInput, {
-                left: 100,
-                top: 100,
-                fill: '#000',
-                fontSize: 24,
-            });
-            canvas.add(text);
-        }
-    };
-
-    const handleImageUpload = (event) => {
-        const file = event.target.files[0];
-        if (file && canvas) {
-            const reader = new FileReader();
-
-            reader.onload = (e) => {
-                const imgSrc = e.target.result;
-
-                fabric.Image.fromURL(imgSrc, (img) => {
-                    if (img) {
-                        img.set({
-                            left: 50,
-                            top: 50,
-                            scaleX: 0.5,
-                            scaleY: 0.5,
-                        });
-                        canvas.add(img);
-                        canvas.renderAll();
-                    }
-                }, { crossOrigin: 'anonymous' });
-            };
-
-            reader.readAsDataURL(file);
-        }
     };
 
     return (
@@ -139,13 +120,14 @@ const ProductDetail = () => {
             <div className="product-detail-content">
                 <div className="product-detail-pic">
                     <div className="product-detail-picture">
-                        <div
-                            className='product-favorite'
-                            onClick={() => setIsFavorite(!isFavorite)}
-                        >
+                        <div className='product-favorite' onClick={() => setIsFavorite(!isFavorite)}>
                             {isFavorite ? <FullHeart /> : <Heart />}
                         </div>
-                        <canvas id="designCanvas" width="450" height="500"></canvas>
+                        <img
+                            src={productImages[product.id][selectedView]}
+                            alt={`${product.name} - ${selectedView}`}
+                            className="product-image"
+                        />
                     </div>
                     <button className='download-pic-btn'>Завантажити фото<Download /></button>
                     <div className='download-description'>
@@ -176,16 +158,6 @@ const ProductDetail = () => {
                     <button className='buy-el-btn'>Купити<Cart /></button>
                     <div className='product-size'>Розмірна сітка:</div>
                     <img src={SizeChart} alt="SizeChart" className='size-chart-pic' />
-                </div>
-                <div className="customization-controls">
-                    <input
-                        type="text"
-                        value={textInput}
-                        onChange={(e) => setTextInput(e.target.value)}
-                        placeholder="Add text"
-                    />
-                    <button onClick={addText}>Add text</button>
-                    <input type="file" onChange={handleImageUpload} />
                 </div>
             </div>
         </div>
