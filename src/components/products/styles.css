@@ -7,7 +7,6 @@
     padding: 10px 30px 30px 20px;
     box-sizing: border-box;
 }
-
 .product-view{
     display: flex;
     gap: 1rem;
@@ -17,23 +16,19 @@
     border-bottom: #b2b2b2 1px solid;
     margin: 0 0 1rem 3rem;
 }
-
 .view-item.selected-view {
     border-bottom: #303030 1px solid;
     color: #303030;
 }
-
 .view-item {
     cursor: pointer;
 }
-
 .product-detail-info{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 3rem;
 }
-
 .product-detail-content{
     display: flex;
     height: 100%;
@@ -42,19 +37,16 @@
     width: 100%;
     padding: 0 3rem 0 3rem;
 }
-
 .size-chart-pic{
     width: 436px;
     height: 258px;
 }
-
 .product-detail-pic{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
 }
-
 .product-detail-info-title{
     display: flex;
     flex-direction: column;
@@ -78,7 +70,6 @@
 .product-description {
     text-align: left;
 }
-
 .download-pic-btn{
     width: 449px;
     height: 62px;
@@ -92,7 +83,6 @@
     gap: 1rem;
     box-sizing: border-box;
 }
-
 .download-description{
     width: 450px;
     height: 110px;
@@ -102,20 +92,17 @@
     align-items: center;
     display: flex;
 }
-
 .size-btn{
     border: none;
     background: inherit;
     width: 65px;
     height: 60px;
 }
-
 .size-btn.selected {
     background: #443D3A;
     color: #fff;
     border-radius: 10px;
 }
-
 .buy-el-btn{
     width: 361px;
     height: 69px;
@@ -129,13 +116,11 @@
     gap: 1rem;
     box-sizing: border-box;
 }
-
 .product-image-view{
     width: 100%;
     height: 100%;
     user-select: none;
 }
-
 .product-detail-picture{
     width: 450px;
     height: 500px;

@@ -4,7 +4,6 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-
 .search-block{
     display: flex;
     justify-content: space-between;
@@ -46,14 +45,12 @@
     padding: 0 0 0 1rem;
     outline: none;
 }
-
 .items-block {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     padding: 3%;
 }
-
 .content-card {
     flex: 1 1 calc(25% - 20px);
     height: 347px;
@@ -67,23 +64,19 @@
     justify-content: center;
     text-decoration: none;
 }
-
 .product-image{
     width: 229px;
     height: 247px;
 }
-
 .content-product-name{
     color: #000;
     display: flex;
     align-items: flex-start;
 }
-
 .content-product-price{
     color: #000;
     font-weight: bold;
 }
-
 .content-card-element{
     display: flex;
     align-items: flex-start;

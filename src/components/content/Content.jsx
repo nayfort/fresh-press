@@ -8,7 +8,7 @@ const Content = () => {
     const conditions = ['Новинки', 'Одяг', 'Аксесуари', 'За рейтингом'];
     const [selectedCondition, setSelectedCondition] = useState(conditions[0]);
     const [clickCounts, setClickCounts] = useState({});
-    const [searchTerm, setSearchTerm] = useState(''); // Состояние для текста поиска
+    const [searchTerm, setSearchTerm] = useState('');
 
     const products = [
         { id: 1, name: 'Футболки', img: Tshirt, price: 50, category: 'Одяг' },
@@ -33,7 +33,7 @@ const Content = () => {
     };
 
     const handleSearchChange = (event) => {
-        setSearchTerm(event.target.value.toLowerCase()); // Обновляем состояние текста поиска
+        setSearchTerm(event.target.value.toLowerCase());
     };
 
     const filteredProducts = products
@@ -45,7 +45,7 @@ const Content = () => {
             }
             return true;
         })
-        .filter((product) => product.name.toLowerCase().includes(searchTerm)) // Фильтруем по тексту поиска
+        .filter((product) => product.name.toLowerCase().includes(searchTerm))
         .sort((a, b) => {
             if (selectedCondition === 'За рейтингом') {
                 const countA = clickCounts[a.id] || 0;
@@ -65,8 +65,8 @@ const Content = () => {
                         type="text"
                         placeholder="Пошук по каталогу..."
                         className="search-input"
-                        value={searchTerm} // Привязка значения к состоянию поиска
-                        onChange={handleSearchChange} // Обработка изменений в инпуте
+                        value={searchTerm}
+                        onChange={handleSearchChange}
                     />
                     <div className="search-icon">
                         <Search />
