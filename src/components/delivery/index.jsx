@@ -1,9 +1,9 @@
-import React from 'react';
+import './styles.css';
 
 const Delivery = () => {
     return (
-        <div>
-            delivery
+        <div className="delivery-content">
+            Delivery
         </div>
     );
 };

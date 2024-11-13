@@ -58,6 +58,7 @@
     flex: 1 1 calc(25% - 20px);
     height: 347px;
     width: 266px;
+    max-width: 383px;
     background-color: #fff;
     border-radius: 10px;
     display: flex;

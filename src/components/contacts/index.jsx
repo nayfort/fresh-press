@@ -1,9 +1,9 @@
-import React from 'react';
+import './styles.css'
 
 const Contacts = () => {
     return (
-        <div>
-            contacts
+        <div className="contacts-content">
+            Contacts
         </div>
     );
 };
