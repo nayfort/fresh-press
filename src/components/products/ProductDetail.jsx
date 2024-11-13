@@ -126,7 +126,7 @@ const ProductDetail = () => {
                         <img
                             src={productImages[product.id][selectedView]}
                             alt={`${product.name} - ${selectedView}`}
-                            className="product-image"
+                            className="product-image-view"
                         />
                     </div>
                     <button className='download-pic-btn'>Завантажити фото<Download /></button>
