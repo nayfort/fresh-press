@@ -8,17 +8,20 @@
 
 .contacts-block{
     display: flex;
+    align-items: center;
     gap: 1rem;
-}
-.contact-btn{
-    border-radius: 5px;
-    background: #D07E50;
-    padding: 5px;
-    cursor: pointer;
 }
 
 .logo-pic{
     width: 405px;
     height: 99px;
+    cursor: pointer;
+}
+
+.connect-btn{
+    color: #D07E50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     cursor: pointer;
 }

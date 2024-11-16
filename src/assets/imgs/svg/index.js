@@ -8,7 +8,9 @@ import Check from "./Check.jsx";
 import Download from "./Download.jsx";
 import Cart from "./Cart.jsx";
 import Heart from "./Heart.jsx";
-import {FullHeart} from "./Heart.jsx";
+import {FullHeart, Favorite} from "./Heart.jsx";
+import User from "./User.jsx";
+import {OrangeCart} from "./Cart.jsx";
 
 export {
     Figma,
@@ -21,5 +23,8 @@ export {
     Download,
     Cart,
     Heart,
-    FullHeart
+    FullHeart,
+    User,
+    Favorite,
+    OrangeCart
 }

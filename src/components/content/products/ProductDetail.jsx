@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './styles.css';
-import { Download, Cart, Heart, FullHeart } from "../../assets/imgs/svg/index.js";
-import SizeChart from "../../assets/imgs/png/tshirt/tshirt-size.png";
+import { Download, Cart, Heart, FullHeart } from "../../../assets/imgs/svg/index.js";
+import SizeChart from "../../../assets/imgs/png/tshirt/tshirt-size.png";
 
-import {tshirtFront, tshirtBack} from "../../assets/imgs/png/tshirt/index.jsx";
-import {hoodieFront, hoodieLeft, hoodieRight, hoodieBack} from "../../assets/imgs/png/hoodie/index.jsx";
-import {hatFront, hatBack, hatRight, hatLeft} from "../../assets/imgs/png/hat/index.jsx";
-import {capFront, capBack} from "../../assets/imgs/png/cap/index.jsx";
-import {bagFront, bagBack} from "../../assets/imgs/png/bag/index.jsx";
-import {cupFront, cupBack} from "../../assets/imgs/png/cup/index.jsx";
-import {stickerFront} from "../../assets/imgs/png/sticker/index.jsx";
-import {bottleFront} from "../../assets/imgs/png/bottle/index.jsx";
+import {tshirtFront, tshirtBack} from "../../../assets/imgs/png/tshirt/index.jsx";
+import {hoodieFront, hoodieLeft, hoodieRight, hoodieBack} from "../../../assets/imgs/png/hoodie/index.jsx";
+import {hatFront, hatBack, hatRight, hatLeft} from "../../../assets/imgs/png/hat/index.jsx";
+import {capFront, capBack} from "../../../assets/imgs/png/cap/index.jsx";
+import {bagFront, bagBack} from "../../../assets/imgs/png/bag/index.jsx";
+import {cupFront, cupBack} from "../../../assets/imgs/png/cup/index.jsx";
+import {stickerFront} from "../../../assets/imgs/png/sticker/index.jsx";
+import {bottleFront} from "../../../assets/imgs/png/bottle/index.jsx";
 
 const productsData = [
     { id: 1, name: 'Футболка', price: 50, type: 'apparel' },
@@ -101,7 +101,6 @@ const ProductDetail = () => {
 
     const handleViewClick = (view) => {
         setSelectedView(view);
-        console.log(`Current view selected: ${view}`);
     };
 
     return (

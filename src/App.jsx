@@ -1,7 +1,17 @@
 import './App.css';
-import { Content, Footer, Header, About, Contacts, Delivery } from './components/index.jsx';
+import {
+    Content,
+    Footer,
+    Header,
+    About,
+    Contacts,
+    Delivery,
+    FavoriteItemPage,
+    CartPage,
+    LoginPage
+} from './components/index.jsx';
 import { Routes, Route } from 'react-router-dom';
-import ProductDetail from "./components/products/index.jsx";
+import ProductDetail from "./components/content/products/index.jsx";
 
 function App() {
     return (
@@ -13,6 +23,9 @@ function App() {
                 <Route path="/about-us" element={<About />} />
                 <Route path="/delivery" element={<Delivery />} />
                 <Route path="/contacts" element={<Contacts />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/favorite" element={<FavoriteItemPage />} />
+                <Route path="/cart" element={<CartPage />} />
             </Routes>
             <Footer />
         </>
