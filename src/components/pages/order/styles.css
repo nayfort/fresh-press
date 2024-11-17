@@ -1,4 +1,4 @@
-.login-page{
+.order-page{
     background: url('../../../assets/imgs/png/background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -6,7 +6,7 @@
     padding: 0 1rem 1rem 1rem;
 }
 
-.login-title{
+.order-title{
     color: #fff;
     border-bottom: #fff 1px solid;
     font-size: 24px;
@@ -14,38 +14,35 @@
     padding: 1rem;
     margin: 0 1rem 1rem 1rem;
 }
-
-.login-page-input{
+.order-input{
     border: none;
     border-radius: 5px;
     height: 40px;
     width: 100%;
     outline: none;
 }
-.login-input-el{
+.order-input-el{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
-
-.login-form-buttons{
+.order-form-buttons{
     display: flex;
     justify-content: center;
     gap: 3%;
 }
-.login-form-button{
+.order-form-button{
     text-decoration: underline;
     cursor: pointer;
 }
-.log-in-btn{
+.order-btn{
     border: none;
     border-radius: 5px;
-    background: #2c2c2c;
+    background: #D07E50;
     color: #fff;
     height: 40px;
 }
-
-.login-form{
+.order-form{
     display: flex;
     flex-direction: column;
     background: #c8bdb8;
@@ -53,5 +50,10 @@
     border-radius: 5px;
     padding: 1rem;
     box-sizing: border-box;
+    gap: 1rem;
+}
+.order-check{
+    display: flex;
+    flex-direction: row;
     gap: 1rem;
 }

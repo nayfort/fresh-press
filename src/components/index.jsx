@@ -7,6 +7,9 @@ import Delivery from "./pages/delivery/index.jsx";
 import FavoriteItemPage from "./pages/favorite/index.jsx";
 import LoginPage from "./pages/login/index.jsx";
 import CartPage from "./pages/cart/index.jsx";
+import SignUp from "./pages/signUp/index.jsx";
+import AccPage from "./pages/account/index.jsx";
+import OrderPage from "./pages/order/index.jsx";
 
 export {
     Header,
@@ -17,5 +20,8 @@ export {
     Delivery,
     FavoriteItemPage,
     LoginPage,
-    CartPage
+    CartPage,
+    SignUp,
+    AccPage,
+    OrderPage,
 };

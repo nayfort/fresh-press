@@ -8,7 +8,9 @@ import {
     Delivery,
     FavoriteItemPage,
     CartPage,
-    LoginPage
+    LoginPage,
+    AccPage,
+    SignUp, OrderPage
 } from './components/index.jsx';
 import { Routes, Route } from 'react-router-dom';
 import ProductDetail from "./components/content/products/index.jsx";
@@ -24,8 +26,12 @@ function App() {
                 <Route path="/delivery" element={<Delivery />} />
                 <Route path="/contacts" element={<Contacts />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/account" element={<AccPage />} />
+                <Route path="/login" element={<LoginPage />} />
                 <Route path="/favorite" element={<FavoriteItemPage />} />
                 <Route path="/cart" element={<CartPage />} />
+                <Route path="/order" element={<OrderPage />} />
             </Routes>
             <Footer />
         </>
