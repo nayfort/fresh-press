@@ -14,10 +14,11 @@ import {
 } from './components/index.jsx';
 import { Routes, Route } from 'react-router-dom';
 import ProductDetail from "./components/content/products/index.jsx";
+import { FavoriteProvider } from './context/FavoriteContext';
 
 function App() {
     return (
-        <>
+        <FavoriteProvider>
             <Header />
             <Routes>
                 <Route path="/" element={<Content />} />
@@ -34,7 +35,7 @@ function App() {
                 <Route path="/order" element={<OrderPage />} />
             </Routes>
             <Footer />
-        </>
+        </FavoriteProvider>
     );
 }
 

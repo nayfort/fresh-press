@@ -8,10 +8,10 @@ const CartPage = () => {
         <div className="cart-page">
             <div className='cart-title'>Кошик</div>
             <div className="cart-content">
-                content
+                (content)
                 <button className='order-button' onClick={() => navigate('/order')}>Замовити</button>
             </div>
-            <div>pagination...</div>
+            <div>(pagination)</div>
         </div>
     );
 };
