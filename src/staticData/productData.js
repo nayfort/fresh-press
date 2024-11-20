@@ -6,16 +6,17 @@ import { bagFront, bagBack } from "../assets/imgs/png/bag/index.jsx";
 import { cupFront, cupBack } from "../assets/imgs/png/cup/index.jsx";
 import { stickerFront } from "../assets/imgs/png/sticker/index.jsx";
 import { bottleFront } from "../assets/imgs/png/bottle/index.jsx";
+import {Bag, Bottle, Cap, Cups, Hat, Hoodie, Stickers, Tshirt} from "../assets/imgs/png/index.js";
 
 export const productsData = [
-    { id: 1, name: 'Футболка', price: 50, type: 'apparel' },
-    { id: 2, name: 'Худі', price: 60, type: 'apparel' },
-    { id: 3, name: 'Шапка', price: 25, type: 'accessory' },
-    { id: 4, name: 'Кепка', price: 20, type: 'accessory' },
-    { id: 5, name: 'Шопер', price: 15, type: 'accessory' },
-    { id: 6, name: 'Стакан', price: 10, type: 'accessory' },
-    { id: 7, name: 'Стікер', price: 5, type: 'accessory' },
-    { id: 8, name: 'Пляшка', price: 12, type: 'accessory' },
+    { id: 1, name: 'Футболка', price: 50, img: Tshirt, type: 'apparel' },
+    { id: 2, name: 'Худі', price: 60, img: Hoodie, type: 'apparel' },
+    { id: 3, name: 'Шапка', price: 25, img: Hat, type: 'accessory' },
+    { id: 4, name: 'Кепка', price: 20, img: Cap, type: 'accessory' },
+    { id: 5, name: 'Шопер', price: 15, img: Bag, type: 'accessory' },
+    { id: 6, name: 'Стакан', price: 10, img: Cups, type: 'accessory' },
+    { id: 7, name: 'Стікер', price: 5, img: Stickers, type: 'accessory' },
+    { id: 8, name: 'Пляшка', price: 12, img: Bottle, type: 'accessory' },
 ];
 
 export const productImages = {

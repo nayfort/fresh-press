@@ -15,9 +15,11 @@ import {
 import { Routes, Route } from 'react-router-dom';
 import ProductDetail from "./components/content/products/index.jsx";
 import { FavoriteProvider } from './context/FavoriteContext';
+import { CartProvider } from './context/CartContext.jsx';
 
 function App() {
     return (
+        <CartProvider>
         <FavoriteProvider>
             <Header />
             <Routes>
@@ -36,6 +38,7 @@ function App() {
             </Routes>
             <Footer />
         </FavoriteProvider>
+        </CartProvider>
     );
 }
 

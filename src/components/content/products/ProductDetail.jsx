@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useFavorites } from "../../../context/FavoriteContext";
+import { useCart } from "../../../context/CartContext";
 import { productsData, productImages } from "../../../staticData/productData.js";
 import { Download, Cart, Heart, FullHeart } from "../../../assets/imgs/svg/index.js";
 import SizeChart from "../../../assets/imgs/png/tshirt/tshirt-size.png";
@@ -14,6 +15,7 @@ const ProductDetail = () => {
     const [selectedView, setSelectedView] = useState("front");
 
     const { favorites, addFavorite, removeFavorite } = useFavorites();
+    const { addToCart } = useCart();
 
     const isFavorite = favorites.some((item) => item.id === product.id);
 
@@ -23,6 +25,12 @@ const ProductDetail = () => {
         } else {
             addFavorite(product);
         }
+    };
+
+    const handleBuy = () => {
+        const productWithSize = { ...product, selectedSize };
+        addToCart(productWithSize);
+        alert("Товар добавлено в кошик!");
     };
 
     const views = product.name === "Худі"
@@ -48,14 +56,6 @@ const ProductDetail = () => {
                     ? [{ name: "Вид спереду", value: "front" }]
                     : [];
 
-    const handleSizeClick = (size) => {
-        setSelectedSize(size);
-    };
-
-    const handleViewClick = (view) => {
-        setSelectedView(view);
-    };
-
     return (
         <div className="product-detail">
             <div className="product-view">
@@ -63,7 +63,7 @@ const ProductDetail = () => {
                     <div
                         key={view.value}
                         className={`view-item ${selectedView === view.value ? "selected-view" : ""}`}
-                        onClick={() => handleViewClick(view.value)}
+                        onClick={() => setSelectedView(view.value)}
                     >
                         {view.name}
                     </div>
@@ -101,13 +101,15 @@ const ProductDetail = () => {
                             <button
                                 key={size}
                                 className={`size-btn ${selectedSize === size ? "selected" : ""}`}
-                                onClick={() => handleSizeClick(size)}
+                                onClick={() => setSelectedSize(size)}
                             >
                                 {size}
                             </button>
                         ))}
                     </div>
-                    <button className="buy-el-btn">Купити<Cart /></button>
+                    <button className="buy-el-btn" onClick={handleBuy}>
+                        Купити<Cart />
+                    </button>
                     <div className="product-size">Розмірна сітка:</div>
                     <img src={SizeChart} alt="SizeChart" className="size-chart-pic" />
                 </div>

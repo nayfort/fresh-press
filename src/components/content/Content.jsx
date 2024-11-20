@@ -2,24 +2,13 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './styles.css';
 import { Search, Check } from "../../assets/imgs/svg/index.js";
-import { Bag, Bottle, Cap, Cups, Hat, Hoodie, Stickers, Tshirt } from "../../assets/imgs/png/index.js";
+import {productsData} from "../../staticData/productData.js";
 
 const Content = () => {
     const conditions = ['Новинки', 'Одяг', 'Аксесуари', 'За рейтингом'];
     const [selectedCondition, setSelectedCondition] = useState(conditions[0]);
     const [clickCounts, setClickCounts] = useState({});
     const [searchTerm, setSearchTerm] = useState('');
-
-    const products = [
-        { id: 1, name: 'Футболки', img: Tshirt, price: 50, category: 'Одяг' },
-        { id: 2, name: 'Худі', img: Hoodie, price: 60, category: 'Одяг' },
-        { id: 3, name: 'Шапки', img: Hat, price: 25, category: 'Одяг' },
-        { id: 4, name: 'Кепки', img: Cap, price: 20, category: 'Одяг' },
-        { id: 5, name: 'Шопери', img: Bag, price: 15, category: 'Аксесуари' },
-        { id: 6, name: 'Стакани', img: Cups, price: 10, category: 'Аксесуари' },
-        { id: 7, name: 'Стікери', img: Stickers, price: 5, category: 'Аксесуари' },
-        { id: 8, name: 'Пляшки', img: Bottle, price: 12, category: 'Аксесуари' }
-    ];
 
     const handleConditionClick = (condition) => {
         setSelectedCondition(condition);
@@ -36,7 +25,7 @@ const Content = () => {
         setSearchTerm(event.target.value.toLowerCase());
     };
 
-    const filteredProducts = products
+    const filteredProducts = productsData
         .filter((product) => {
             if (selectedCondition === 'Одяг') {
                 return product.category === 'Одяг';
