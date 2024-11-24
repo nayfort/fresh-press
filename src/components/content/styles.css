@@ -20,6 +20,8 @@
     border-radius: 5px;
     cursor: pointer;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
 }
 .s-condition.selected {
     background: #3D3D3D;

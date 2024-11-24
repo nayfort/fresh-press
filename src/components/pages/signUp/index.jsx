@@ -9,19 +9,19 @@ const SignUp = () => {
             <p className='login-title'>Акаунт</p>
 
             <div className="registration-form">
-                <div>
+                <div className="registration-form-input">
                     <p>Email</p>
-                    <input type="text" className='login-page-input'/>
+                    <input type="text" className='login-page-input' placeholder='example@gmail.com'/>
                 </div>
-                <div>
+                <div className="registration-form-input">
                     <p>Пароль</p>
-                    <input type="text" className='login-page-input'/>
+                    <input type="text" className='login-page-input' placeholder='password'/>
                 </div>
-                <div>
+                <div className="registration-form-input">
                     <p>Підтвердьте пароль</p>
-                    <input type="text" className='login-page-input'/>
+                    <input type="text" className='login-page-input' placeholder='password'/>
                 </div>
-                <button onClick={() => navigate('/account')}>Зареєструватися</button>
+                <button className='registration-btn' onClick={() => navigate('/account')}>Зареєструватися</button>
             </div>
         </div>
     );
