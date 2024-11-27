@@ -81,7 +81,7 @@ const ProductDetail = () => {
                             className="product-image-view"
                         />
                     </div>
-                    <button className="download-pic-btn">Завантажити фото<Download /></button>
+                    <button className="download-pic-btn" onClick={() => console.log('Download photo')}>Завантажити фото<Download /></button>
                     <div className="download-description">
                         Щоб нанести фото по всій ширині області друку, потрібен розмір не менше 1000x1000 px, бажано у форматі .png з прозорим фоном.
                         Мінімальна роздільна здатність 200 dpi, розмір зображення 1:1.

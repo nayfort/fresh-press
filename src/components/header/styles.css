@@ -16,6 +16,7 @@
     width: 405px;
     height: 99px;
     cursor: pointer;
+    user-select: none;
 }
 
 .connect-btn{

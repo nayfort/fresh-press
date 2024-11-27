@@ -70,6 +70,7 @@
 .product-image{
     width: 229px;
     height: 247px;
+    user-select: none;
 }
 .content-product-name{
     color: #000;
