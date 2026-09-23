@@ -1,4 +1,4 @@
-import bagFront from "./bag-front.png";
-import bagBack from "./bag-back.png";
+import bagFront from './bag-front.png';
+import bagBack from './bag-back.png';
 
-export {bagFront, bagBack}
+export { bagFront, bagBack };

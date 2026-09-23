@@ -1,3 +1,3 @@
-import stickerFront from "./sticker-mockup.png";
+import stickerFront from './sticker-mockup.png';
 
-export {stickerFront};
+export { stickerFront };

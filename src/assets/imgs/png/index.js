@@ -7,13 +7,4 @@ import Hoodie from './hoodie/hoodie.png';
 import Stickers from './sticker/stickers.png';
 import Tshirt from './tshirt/tshirt.png';
 
-export {
-    Bag,
-    Bottle,
-    Cap,
-    Cups,
-    Hat,
-    Hoodie,
-    Stickers,
-    Tshirt
-}
+export { Bag, Bottle, Cap, Cups, Hat, Hoodie, Stickers, Tshirt };

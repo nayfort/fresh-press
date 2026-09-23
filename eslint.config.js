@@ -1,11 +1,11 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import react from 'eslint-plugin-react'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
+import js from '@eslint/js';
+import globals from 'globals';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default [
-  { ignores: ['dist'] },
+  { ignores: ['dist', 'data', 'test-results', 'playwright-report'] },
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
@@ -35,4 +35,8 @@ export default [
       ],
     },
   },
-]
+  {
+    files: ['server/**/*.js', '*config.js', 'tests/**/*.js'],
+    languageOptions: { globals: globals.node },
+  },
+];

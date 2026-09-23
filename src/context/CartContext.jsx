@@ -1,43 +1,50 @@
-import { createContext, useContext, useState } from "react";
-
-const CartContext = createContext();
-
-export const useCart = () => useContext(CartContext);
+import PropTypes from 'prop-types';
+import { CartContext } from './CartContext.js';
+import { useStorage } from '../lib/useStorage.js';
+import { cartKey, normalizeCart } from '../lib/cart.js';
 
 export const CartProvider = ({ children }) => {
-    const [cartItems, setCartItems] = useState([]);
-
-    const addToCart = (product) => {
-        setCartItems((prevItems) => {
-            const existingItem = prevItems.find((item) => item.id === product.id);
-            if (existingItem) {
-                return prevItems.map((item) =>
-                    item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-                );
-            }
-            return [...prevItems, { ...product, quantity: 1 }];
-        });
-    };
-
-    const removeFromCart = (productId) => {
-        setCartItems((prevItems) => prevItems.filter((item) => item.id !== productId));
-    };
-
-    const updateQuantity = (productId, quantity) => {
-        setCartItems((prevItems) =>
-            prevItems.map((item) =>
-                item.id === productId ? { ...item, quantity: Number(quantity) } : item
-            )
+  const [savedItems, setCartItems] = useStorage('freshpress.cart.v2', []);
+  const cartItems = normalizeCart(savedItems);
+  const addToCart = (product) => {
+    const key = cartKey(product);
+    setCartItems((saved) => {
+      const items = normalizeCart(saved);
+      if (items.some((item) => item.key === key))
+        return items.map((item) =>
+          item.key === key
+            ? { ...item, quantity: Math.min(99, item.quantity + 1) }
+            : item,
         );
-    };
-
-    const clearCart = () => {
-        setCartItems([]);
-    };
-
-    return (
-        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity, clearCart }}>
-            {children}
-        </CartContext.Provider>
+      return [...items, { ...product, key, quantity: 1 }];
+    });
+  };
+  const removeFromCart = (key) =>
+    setCartItems((items) =>
+      normalizeCart(items).filter((item) => item.key !== key),
     );
+  const updateQuantity = (key, quantity) => {
+    const value = Number(quantity);
+    if (!Number.isInteger(value) || value < 1 || value > 99) return;
+    setCartItems((items) =>
+      normalizeCart(items).map((item) =>
+        item.key === key ? { ...item, quantity: value } : item,
+      ),
+    );
+  };
+  const clearCart = () => setCartItems([]);
+  return (
+    <CartContext.Provider
+      value={{
+        cartItems,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        clearCart,
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
 };
+CartProvider.propTypes = { children: PropTypes.node.isRequired };

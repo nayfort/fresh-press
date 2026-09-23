@@ -1,3 +1,3 @@
-import bottleFront from "./bottle-mockup.png";
+import bottleFront from './bottle-mockup.png';
 
-export {bottleFront}
+export { bottleFront };

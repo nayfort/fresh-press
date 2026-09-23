@@ -1,9 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="uk">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/assets/imgs/png/icon.png" />
+    <link rel="icon" type="image/png" href="/src/assets/imgs/png/icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#443d3a" />
+    <script>
+      try {
+        const saved = localStorage.getItem('freshpress.theme');
+        const theme = ['light', 'dark'].includes(saved)
+          ? saved
+          : matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+        document.documentElement.lang =
+          localStorage.getItem('freshpress.language') === 'en' ? 'en' : 'uk';
+      } catch {}
+    </script>
     <title>Fresh Press</title>
   </head>
   <body>
